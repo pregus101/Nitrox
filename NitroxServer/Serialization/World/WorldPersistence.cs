@@ -38,7 +38,16 @@ public class WorldPersistence
     private readonly RandomSpawnSpoofer randomSpawnSpoofer;
     private readonly NtpSyncer ntpSyncer;
 
-    public WorldPersistence(ServerProtoBufSerializer protoBufSerializer, ServerJsonSerializer jsonSerializer, SubnauticaServerConfig config, RandomStartGenerator randomStart, IWorldModifier worldModifier, SaveDataUpgrade[] upgrades, RandomSpawnSpoofer randomSpawnSpoofer, NtpSyncer ntpSyncer)
+    public WorldPersistence(
+        ServerProtoBufSerializer protoBufSerializer,
+        ServerJsonSerializer jsonSerializer,
+        SubnauticaServerConfig config,
+        RandomStartGenerator randomStart,
+        IWorldModifier worldModifier,
+        SaveDataUpgrade[] upgrades,
+        RandomSpawnSpoofer randomSpawnSpoofer,
+        NtpSyncer ntpSyncer
+    )
     {
         this.protoBufSerializer = protoBufSerializer;
         this.jsonSerializer = jsonSerializer;
@@ -127,7 +136,7 @@ public class WorldPersistence
 #if DEBUG
             seed = "TCCBIBZXAB";
 #else
-                seed = StringHelper.GenerateRandomString(10);
+            seed = StringHelper.GenerateRandomString(10);
 #endif
         }
         // Initialized only once, just like UnityEngine.Random
@@ -147,7 +156,8 @@ public class WorldPersistence
             EntityRegistry = entityRegistry,
             GameData = pWorldData.WorldData.GameData,
             GameMode = gameMode,
-            Seed = seed
+            Seed = seed,
+            SessionSettings = new()
         };
 
         world.TimeKeeper = new(world.PlayerManager, ntpSyncer, pWorldData.WorldData.GameData.StoryTiming.ElapsedSeconds, pWorldData.WorldData.GameData.StoryTiming.RealTimeElapsed);

@@ -42,6 +42,10 @@
         <PackageReference Include="HanumanInstitute.MvvmDialogs.Avalonia" Version="2.1.0" />
         <PackageReference Include="LitJson" Version="0.19.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+        <PackageReference Include="ServiceScan.SourceGenerator" Version="2.1.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
@@ -87,6 +91,7 @@
     </Target>
 
     <ItemGroup>
+        <Content Include="..\Nitrox.Assets.Subnautica\*.dll" LinkBase="lib\net472" CopyToOutputDirectory="PreserveNewest" />
         <Content Include="..\Nitrox.Assets.Subnautica\Resources\**" LinkBase="Resources" CopyToOutputDirectory="PreserveNewest" />
         <Content Include="..\Nitrox.Assets.Subnautica\LanguageFiles\**" LinkBase="Resources\LanguageFiles" CopyToOutputDirectory="PreserveNewest" />
         <Content Include="..\Nitrox.Assets.Subnautica\AssetBundles\**" LinkBase="Resources\AssetBundles" CopyToOutputDirectory="PreserveNewest" />
